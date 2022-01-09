@@ -8,6 +8,10 @@ namespace RESTAPISMART.Repository.Interface
 {
     public interface IManagement
     {
-
+        List<IEnumerable<Management>> GetAllManagement();
+        Task<Management> GetManagementByID(int id);
+        Task<Management> GetManagementByMarket();
+        Task<Management> GetManagementByName();
+        Task<Management> GetManagementByState();
     }
 }

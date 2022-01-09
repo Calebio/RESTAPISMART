@@ -8,6 +8,9 @@ namespace RESTAPISMART.Repository.Interface
 {
     public interface IProperties
     {
-
+        List<IEnumerable<Properties>> GetProperties();
+        Task<Properties> GetPropertyById(int PropID);
+        Task<Properties> GetPropertyByMarket();
+        Task<Properties> GetPropertyByFormer();
     }
 }
