@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RESTAPISMART.Repository.Repo
 {
-    public class PropertiesRepo : IProperties
+    public class PropertiesRepo   //IProperties
     {
 
        

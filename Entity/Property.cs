@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RESTAPISMART
 {
-    public class Properties
+    public class Property
     {
         public int propertyID { get; set; }
         public string name { get; set; }

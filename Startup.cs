@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Nest;
 using RESTAPISMART.Data;
 using RESTAPISMART.Repository.Interface;
 using RESTAPISMART.Repository.Repo;
@@ -19,26 +20,36 @@ namespace RESTAPISMART
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IConnection connection)
         {
+            var connectionSettings = new ConnectionSettings()
+                .DefaultMappingFor<Property>(i => i
+                .IndexName("market")
+                .IdProperty(p => p.name)
+                )
+                .EnableDebugMode()
+                .PrettyJson()
+                .RequestTimeout(TimeSpan.FromMinutes(2));
+
+
             Configuration = configuration;
             Environment.SetEnvironmentVariable("AWS_ACCESS_KEY_ID", configuration.GetSection("AWS:AccessKey").Value);
             Environment.SetEnvironmentVariable("AWS_SECRET_ACCESS_KEY", configuration.GetSection("AWS:SecretKey").Value);
             Environment.SetEnvironmentVariable("AWS_REGION", configuration.GetSection("AWS:Region").Value);
 
-            Log.Logger = new LoggerConfiguration()
-                .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(configuration.GetSection("AWS:ElasticUrl").Value))
-                {
-                    ModifyConnectionSettings = conn =>
-                    {
-                        var httpConnection = new AwsHttpConnection(configuration.GetSection("AWS:Region").Value);
-                        var pool = new SingleNodeConnectionPool(new Uri(configuration.GetSection("AWS:ElasticUrl").Value));
-                        var conf = new ConnectionConfiguration(pool, httpConnection);
-                        return conf;
-                    },
-                    IndexFormat = "",
-                })
-                .CreateLogger();
+            //Log.Logger = new LoggerConfiguration()
+            //    .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(configuration.GetSection("AWS:ElasticUrl").Value))
+            //    {
+            //        ModifyConnectionSettings = conn =>
+            //        {
+            //            var httpConnection = new AwsHttpConnection(configuration.GetSection("AWS:Region").Value);
+            //            var pool = new SingleNodeConnectionPool(new Uri(configuration.GetSection("AWS:ElasticUrl").Value));
+            //            var conf = new ConnectionConfiguration(pool, httpConnection);
+            //            return conf;
+            //        },
+            //        IndexFormat = "",
+            //    })
+            //    .CreateLogger();
 
         }
 

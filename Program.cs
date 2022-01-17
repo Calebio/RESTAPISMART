@@ -1,9 +1,12 @@
+using Elasticsearch.Net;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Nest;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -22,5 +25,6 @@ namespace RESTAPISMART
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
     }
 }

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace RESTAPISMART.Repository.Interface
 {
-    public interface IProperties 
+    public interface IProperties
     {
-
+        object Search<T>(Func<object, object> p);
     }
 }
