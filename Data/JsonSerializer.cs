@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using RESTAPISMART.Entity;
+
 
 namespace RESTAPISMART.Data
 {
-    public class JsonSerializer 
+    public class JsonSerializer : Models
     {
-
+      
     }
 }
+

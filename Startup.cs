@@ -6,15 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Nest;
-using RESTAPISMART.Data;
-using RESTAPISMART.Repository.Interface;
-using RESTAPISMART.Repository.Repo;
-using Serilog;
-using Serilog.Sinks.Elasticsearch;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using static RESTAPISMART.Entity.Models;
 
 namespace RESTAPISMART
 {
@@ -25,7 +18,7 @@ namespace RESTAPISMART
             var connectionSettings = new ConnectionSettings()
                 .DefaultMappingFor<Property>(i => i
                 .IndexName("market")
-                .IdProperty(p => p.name)
+                .IdProperty(p => p.market)
                 )
                 .EnableDebugMode()
                 .PrettyJson()

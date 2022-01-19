@@ -11,7 +11,7 @@ namespace SearchAPI
 
         public ConnectionToNest()
         {
-            var settings = new ConnectionSettings(new Uri("uri from aws elasticSearch")) .DefaultIndex("markets");
+            var settings = new ConnectionSettings(new Uri("https://search-smart-apartment-data-test-shhsba3ijh7273p2dkt5hre5e4.us-east-1.es.amazonaws.com/mgmtindex")) .DefaultIndex("");
 
             this.ElasticLowLevelClient = new ElasticLowLevelClient(settings);
         }
