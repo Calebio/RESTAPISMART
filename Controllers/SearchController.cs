@@ -89,16 +89,16 @@ namespace RESTAPISMART.Controllers
             return response.Documents;
         }
 
-        [HttpPost]
-        public Task<IActionResult> PostMgmtData()
-        {
+        //[HttpPost]
+        //public Task<IActionResult> PostMgmtData()
+        //{
+        //    var json =
+        //}
 
-        }
-       
-        public Task<IActionResult> PostPropertyData()
-        {
+        //public Task<IActionResult> PostPropertyData()
+        //{
 
-        }
+        //}
 
     }
 }
