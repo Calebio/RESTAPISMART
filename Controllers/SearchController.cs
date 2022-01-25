@@ -7,12 +7,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using RESTAPISMART.Entity;
 using System.Threading.Tasks;
+using static RESTAPISMART.Entity.Models;
 
 namespace RESTAPISMART.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SearchController : Models
+    public class SearchController : ControllerBase
     {
         //SearchAPI.ConnectionToNest SearchApi;
 
