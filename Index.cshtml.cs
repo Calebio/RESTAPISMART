@@ -28,7 +28,7 @@ namespace RESTAPISMART
         [BindProperty]
         public string Market { get; set; }
 
-        //public IEnumerable<Property> properties { get; set; }
+        public IEnumerable<Property> properties { get; set; }
 
         public Searcher searcher{ get; set; }
 
