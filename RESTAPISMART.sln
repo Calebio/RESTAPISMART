@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32002.261
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RESTAPISMART", "RESTAPISMART.csproj", "{5159215B-C31A-45C8-BD05-3F7AB7150678}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleUpload", "..\ConsoleUpload\ConsoleUpload.csproj", "{0A7ACEE5-84EB-45F1-998B-496B1BAB6706}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleUpload", "..\ConsoleUpload\ConsoleUpload.csproj", "{0A7ACEE5-84EB-45F1-998B-496B1BAB6706}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

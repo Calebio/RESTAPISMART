@@ -7,6 +7,7 @@
   <ItemGroup>
     <Content Remove="appsettings.Development.json" />
     <Content Remove="appsettings.json" />
+    <Content Remove="Index.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +19,18 @@
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="https://json.schemastore.org/asmdef.json" /></VisualStudio></ProjectExtensions>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Index.cshtml" />
+  </ItemGroup>
 
 
 </Project>

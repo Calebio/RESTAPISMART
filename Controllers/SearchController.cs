@@ -7,7 +7,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using RESTAPISMART.Entity;
 using System.Threading.Tasks;
-using static RESTAPISMART.Entity.Models;
 
 namespace RESTAPISMART.Controllers
 {
@@ -15,91 +14,35 @@ namespace RESTAPISMART.Controllers
     [ApiController]
     public class SearchController : ControllerBase
     {
-        //SearchAPI.ConnectionToNest SearchApi;
+        private readonly IPropRepo propRepo;
 
-        ElasticClient ElasticClient;
-
-        public SearchController()
+        public SearchController(IPropRepo propRepo)
         {
-            var uri = new Uri("https://testuser-elssrch:@Caleb55446@search-smart-apartment-data-test-shhsba3ijh7273p2dkt5hre5e4.us-east-1.es.amazonaws.com/mgmtindex");
-            //var settings = new ConnectionConfiguration(uri);
-            var settings = new ConnectionSettings(uri);
-            //SearchApi = new SearchAPI.ConnectionToNest();
-            ElasticClient = new ElasticClient(settings);
+            this.propRepo = propRepo;
         }
 
-        [Required]
-        public string searchPhrase { get; set; }
-        public string market { get; set; }
-        public int limit = 25;
 
-        //to respond to search
-        
+    //[HttpGet]
+    //public IEnumerable<Management> SearchMgmt(string searchPhrase)
+    //{
 
-        
-        public Property Properties { get; set; }
 
-        public Management Managements { get; set; }
+
+
+
+    //}
 
         [HttpGet]
-        public IEnumerable<Management> Search(string searchPhrase)
+        public async Task<IActionResult> SearchProp(string searchPhrase)
         {
-
-
-            if (market == Managements.market)
+            try
             {
-
-                var result = ElasticClient.Search<Management>();
-                return result.Documents;
-
-
+                return Ok(await propRepo.GetProperty(searchPhrase));
             }
-
-            var response = ElasticClient.Search<Management>(s => s
-            .Index("mgmtindex") //or specify index via settings.DefaultIndex("mytweetindex");
-            .From(0)
-            .Size(limit)
-            .Query(q => q
-            .Term(t => t.market, searchPhrase) || q
-            .Match(mq => mq.Field(f => f.market).Query("*"))
-     )
- );
-            return response.Documents;
-        }   
-            
-        [HttpGet]
-        public IEnumerable<Property> SearchProp(string searchPhrase)
-        {
-
-            if(market == Properties.market)
+            catch (Exception)
             {
-                var result = ElasticClient.Search<Property>();
-                return result.Documents;
+                return StatusCode(500);
             }
-           
-
-            var response = ElasticClient.Search<Property>(s => s
-            .Index("propertyindex")
-            .From(0)
-            .Size(limit)
-            .Query(q => q
-            .Term(t => t.name, searchPhrase) || q
-            .Match(mq => mq.Field(f => f.name).Query("*"))
-            )
-    );
-            return response.Documents;
         }
-
-        //[HttpPost]
-        //public Task<IActionResult> PostMgmtData()
-        //{
-        //    var json =
-        //}
-
-        //public Task<IActionResult> PostPropertyData()
-        //{
-
-        //}
-
-    }
+}
 }
