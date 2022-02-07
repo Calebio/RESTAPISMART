@@ -21,17 +21,6 @@ namespace RESTAPISMART.Controllers
             this.propRepo = propRepo;
         }
 
-
-    //[HttpGet]
-    //public IEnumerable<Management> SearchMgmt(string searchPhrase)
-    //{
-
-
-
-
-
-    //}
-
         [HttpGet]
         public async Task<IActionResult> SearchProp(string searchPhrase)
         {
